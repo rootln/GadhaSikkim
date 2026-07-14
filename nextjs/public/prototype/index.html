@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#173f35" />
+  <meta name="description" content="A permit-aware, realistic Sikkim itinerary planner for five travellers from Bhubaneswar." />
+  <meta property="og:title" content="Five Friends. One Himalayan Journey." />
+  <meta property="og:description" content="Compare three realistic Sikkim itineraries, explore destinations, permits and gateway options." />
+  <title>Sikkim — Five Friends, One Himalayan Journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar" id="topbar">
+    <a class="brand" href="#home" aria-label="Sikkim Journey home">
+      <span class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span><strong>SIKKIM</strong><small>FIVE FRIENDS JOURNEY</small></span>
+    </a>
+    <nav class="desktop-nav" aria-label="Primary navigation">
+      <a href="#explore">Explore</a>
+      <a href="#itineraries">Itineraries</a>
+      <a href="#journey">From Bhubaneswar</a>
+      <a href="#map">Map</a>
+      <a href="#permits">Permits</a>
+      <a href="#essentials">Essentials</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle colour mode">☾</button>
+      <button class="pill-btn small" data-open-trip>My Trip <span id="savedCountBadge">0</span></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="hero-image" role="img" aria-label="High Himalayan valley in North Sikkim"></div>
+      <div class="hero-overlay"></div>
+      <div class="mist mist-one"></div><div class="mist mist-two"></div>
+      <svg class="hero-route" viewBox="0 0 1000 500" aria-hidden="true">
+        <path d="M30,410 C160,300 220,380 330,270 C460,145 550,290 650,180 C760,60 840,160 970,70" />
+        <circle cx="30" cy="410" r="7"/><circle cx="330" cy="270" r="7"/><circle cx="650" cy="180" r="7"/><circle cx="970" cy="70" r="7"/>
+      </svg>
+      <div class="hero-content container">
+        <div class="eyebrow light"><span></span> SIKKIM · OCTOBER–NOVEMBER</div>
+        <h1>Five Friends.<br><em>One Himalayan Journey.</em></h1>
+        <p>Explore Sikkim through thoughtfully paced journeys designed for five travellers from Bhubaneswar.</p>
+        <div class="hero-selector" role="tablist" aria-label="Select itinerary duration">
+          <button class="duration-chip active" data-itinerary="essential"><strong>5N / 6D</strong><span>Essential Sikkim</span></button>
+          <button class="duration-chip" data-itinerary="highlights"><strong>6N / 7D</strong><span>Sikkim Highlights</span></button>
+          <button class="duration-chip" data-itinerary="grand"><strong>7N / 8D</strong><span>Grand Circuit</span></button>
+        </div>
+        <div class="hero-actions">
+          <a class="pill-btn" href="#itineraries">Explore the itineraries <span>→</span></a>
+          <a class="ghost-btn" href="#map">View Sikkim on the map</a>
+        </div>
+      </div>
+      <div class="scroll-cue"><span></span> SCROLL TO EXPLORE</div>
+    </section>
+
+    <section class="trip-strip" aria-label="Trip profile">
+      <div class="container trip-strip-inner">
+        <div class="traveller-stack" aria-label="Five adult travellers"><span>W</span><span>W</span><span>W</span><span>M</span><span>M</span></div>
+        <div><strong>5 travellers</strong><small>3 women + 2 men</small></div>
+        <div><strong>Oct–Nov</strong><small>Post-monsoon window</small></div>
+        <div><strong>Bhubaneswar</strong><small>Flight, train or mixed</small></div>
+        <div><strong>Private SUV</strong><small>Shared options shown</small></div>
+        <div><strong>Permit-aware</strong><small>Protected routes flagged</small></div>
+      </div>
+    </section>
+
+    <section class="section intro-section" id="itineraries">
+      <div class="container">
+        <div class="section-head split-head">
+          <div><div class="eyebrow"><span></span> THREE WAYS TO SEE SIKKIM</div><h2>Choose your mountain rhythm.</h2></div>
+          <p>Each plan respects road time, rest, permits and daylight. No fantasy routes. No “cover everything before lunch” energy.</p>
+        </div>
+        <div class="itinerary-grid" id="itineraryCards"></div>
+        <div class="compare-bar" id="compareBar" hidden>
+          <div><strong id="compareCount">0 itineraries selected</strong><small>Choose two or three to compare side by side.</small></div>
+          <button class="pill-btn small" id="openCompare">Compare selected</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section itinerary-detail-section" id="day-plan">
+      <div class="container">
+        <div class="detail-header">
+          <div>
+            <div class="eyebrow"><span></span> DAY-BY-DAY PLAN</div>
+            <h2 id="detailTitle">Essential Sikkim</h2>
+            <p id="detailSummary"></p>
+          </div>
+          <div class="detail-tabs" id="detailTabs"></div>
+        </div>
+        <div class="itinerary-layout">
+          <div class="timeline" id="timeline"></div>
+          <aside class="sticky-map" id="map">
+            <div class="map-card">
+              <div class="map-card-head"><div><small>ACTIVE DAY</small><strong id="activeMapTitle">Gateway to Gangtok</strong></div><button class="icon-btn" id="mapLayerBtn" aria-label="Switch map style">◫</button></div>
+              <div class="route-visual" id="routeVisual" aria-hidden="true"></div>
+              <iframe id="routeMap" title="Google map for selected itinerary day" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <div class="map-footer"><span id="mapMeta">Indicative route</span><a id="openMapLink" target="_blank" rel="noopener">Open in Google Maps ↗</a></div>
+            </div>
+            <div class="disclaimer-card"><span>!</span><p><strong>Mountain timing is indicative.</strong> Weather, traffic, road clearance, permits and daylight can change the plan.</p></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark-section" id="explore">
+      <div class="container">
+        <div class="section-head split-head light-text">
+          <div><div class="eyebrow light"><span></span> EXPLORE ALL OF SIKKIM</div><h2>Every circuit, in one living library.</h2></div>
+          <p>The itineraries stay realistic. The destination library goes wider, so you can understand what fits now and what deserves another journey.</p>
+        </div>
+        <div class="filter-row">
+          <label class="search-box">⌕<input id="destinationSearch" type="search" placeholder="Search lakes, monasteries, villages…" /></label>
+          <select id="regionFilter" aria-label="Filter destinations by region"><option value="all">All regions</option></select>
+          <select id="permitFilter" aria-label="Filter destinations by permit"><option value="all">All permit types</option><option value="green">No special permit</option><option value="amber">May require registration</option><option value="red">Protected / restricted</option></select>
+        </div>
+        <div class="destination-grid" id="destinationGrid"></div>
+        <button class="ghost-btn light-outline centered" id="loadMoreDestinations">Show more destinations</button>
+      </div>
+    </section>
+
+    <section class="section journey-section" id="journey">
+      <div class="container">
+        <div class="section-head split-head">
+          <div><div class="eyebrow"><span></span> FROM BHUBANESWAR TO THE HIMALAYAS</div><h2>The trip begins before Sikkim.</h2></div>
+          <p>Choose how the group reaches the mountain gateway. Schedules remain live-data placeholders rather than hard-coded promises.</p>
+        </div>
+        <div class="journey-card">
+          <div class="journey-tabs" role="tablist">
+            <button class="active" data-journey-tab="flight">✈ Flight</button>
+            <button data-journey-tab="train">▤ Train</button>
+            <button data-journey-tab="mixed">⇄ Mixed route</button>
+            <button data-journey-tab="return">↩ Return journey</button>
+          </div>
+          <div id="journeyContent"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section transport-section">
+      <div class="container">
+        <div class="section-head"><div class="eyebrow"><span></span> MOVING FIVE PEOPLE WELL</div><h2>Private SUV by default. Shared transport where it genuinely works.</h2></div>
+        <div class="transport-toggle"><button class="active" data-transport="private">Private SUV</button><button data-transport="shared">Shared / public</button></div>
+        <div id="transportContent"></div>
+      </div>
+    </section>
+
+    <section class="section permits-section" id="permits">
+      <div class="container">
+        <div class="section-head split-head">
+          <div><div class="eyebrow"><span></span> PERMIT CENTRE</div><h2>Know what needs a green light.</h2></div>
+          <p>Permits are administrative permissions, not road guarantees. Always verify the latest rule and access status before departure.</p>
+        </div>
+        <div class="permit-layout">
+          <div class="nationality-card">
+            <small>GROUP NATIONALITY</small><h3>Who is travelling?</h3>
+            <div class="segmented" id="nationalitySelector"><button class="active" data-nationality="indian">5 Indian adults</button><button data-nationality="foreign">Foreign citizens</button><button data-nationality="mixed">Mixed group</button></div>
+            <div id="nationalityCopy"></div>
+          </div>
+          <div class="permit-legend">
+            <div><span class="permit-dot green"></span><strong>No special permit normally required</strong><small>Normal local entry rules still apply.</small></div>
+            <div><span class="permit-dot amber"></span><strong>Permit or registration may be required</strong><small>Check current route or attraction rules.</small></div>
+            <div><span class="permit-dot red"></span><strong>Protected / restricted route</strong><small>Registered operator or local vehicle is generally involved.</small></div>
+            <div><span class="permit-dot blue"></span><strong>Foreign-national rules apply</strong><small>Access may differ materially from Indian-national rules.</small></div>
+          </div>
+        </div>
+        <div class="permit-checklist">
+          <article><span>01</span><h3>Prepare documents</h3><p>Original ID, clear photocopies, recent photographs and child documents where applicable.</p></article>
+          <article><span>02</span><h3>Use the correct channel</h3><p>Permit-dependent North and border routes are generally processed through registered local operators.</p></article>
+          <article><span>03</span><h3>Keep route flexibility</h3><p>Issued permission does not override weather, road, military or administrative closure.</p></article>
+        </div>
+        <div class="verification-banner"><div><small>LAST VERIFIED FIELD</small><strong>Prototype data — verify before travel</strong></div><p>Official Sikkim Tourism, district administration and your registered operator remain the source of truth.</p></div>
+      </div>
+    </section>
+
+    <section class="section season-section" id="essentials">
+      <div class="container">
+        <div class="season-card">
+          <div class="season-visual"><div class="month-display"><span id="monthNumber">10</span><small id="monthLabel">OCTOBER</small></div><div class="season-mountain"></div></div>
+          <div class="season-content">
+            <div class="eyebrow"><span></span> SEASONAL EXPERIENCE</div>
+            <h2>October or November?</h2>
+            <div class="segmented season-toggle"><button class="active" data-month="October">October</button><button data-month="November">November</button></div>
+            <div id="seasonCopy"></div>
+          </div>
+        </div>
+        <div class="essentials-grid">
+          <div class="packing-card"><div class="card-top"><div><small>PACKING PROGRESS</small><h3>Ready for the road?</h3></div><strong id="packingProgress">0%</strong></div><div class="progress"><span id="packingBar"></span></div><div class="packing-list" id="packingList"></div></div>
+          <div class="safety-card"><small>TRAVEL GENTLY</small><h3>Mountain comfort rules</h3><ul><li>Pause for a restroom or refreshment break every 2–2.5 hours where possible.</li><li>Protect a 45–60 minute rest window after long transfers.</li><li>Do not overexert at altitude; start early and descend if unwell.</li><li>Respect monasteries, local customs and restricted military areas.</li><li>Carry water, identity documents and offline contact details.</li></ul></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dashboard-preview">
+      <div class="container dashboard-banner">
+        <div><div class="eyebrow light"><span></span> MY TRIP</div><h2>One calm place for the group plan.</h2><p>Save days and destinations, track documents, record votes, then share or print the plan.</p></div>
+        <button class="pill-btn light-button" data-open-trip>Open group dashboard <span>→</span></button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div><a class="brand footer-brand" href="#home"><span class="brand-mark"><span></span><span></span><span></span></span><span><strong>SIKKIM</strong><small>FIVE FRIENDS JOURNEY</small></span></a><p>Thoughtful Himalayan planning for five travellers from Bhubaneswar.</p></div>
+      <div><strong>Plan</strong><a href="#itineraries">Itineraries</a><a href="#journey">Gateway options</a><a href="#permits">Permit centre</a></div>
+      <div><strong>Explore</strong><a href="#explore">Destination library</a><a href="#map">Interactive map</a><a href="#essentials">Travel essentials</a></div>
+      <div><strong>Important</strong><p>Routes, permits and access may change due to weather, road conditions and administrative instructions. Verify the latest status before departure.</p></div>
+    </div>
+    <div class="container footer-bottom"><span>Prototype travel planner · No prices displayed</span><span>Photography references: Wikimedia Commons / linked source pages</span></div>
+  </footer>
+
+  <nav class="mobile-bottom-nav" aria-label="Mobile navigation"><a href="#explore">⌖<span>Explore</span></a><a href="#itineraries">▤<span>Plans</span></a><a href="#map">◎<span>Map</span></a><button data-open-trip>♡<span>Saved</span></button></nav>
+
+  <dialog id="compareDialog" class="modal"><div class="modal-head"><div><small>ITINERARY COMPARISON</small><h2>Choose the right rhythm.</h2></div><button class="icon-btn" data-close-dialog>×</button></div><div id="compareTable"></div></dialog>
+
+  <dialog id="tripDialog" class="modal trip-modal"><div class="modal-head"><div><small>MY TRIP DASHBOARD</small><h2>Five travellers. One shared plan.</h2></div><button class="icon-btn" data-close-dialog>×</button></div><div id="tripDashboard"></div></dialog>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
